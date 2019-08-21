@@ -69,9 +69,9 @@ function confirmDatePlugin(pluginConfig: Config): Plugin {
                 showCondition &&
                 localConfirmContainer
               )
-                return localConfirmContainer.classList.add("visible");
+                return localConfirmContainer.classList.add("flatpickr-visible");
 
-              localConfirmContainer.classList.remove("visible");
+              localConfirmContainer.classList.remove("flatpickr-visible");
             },
           }
         : {}),

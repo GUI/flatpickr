@@ -976,7 +976,7 @@ function FlatpickrInstance(
       self.config.showMonths > 1 ||
       self.config.monthSelectorType === "static"
     ) {
-      monthElement = createElement<HTMLSpanElement>("span", "cur-month");
+      monthElement = createElement<HTMLSpanElement>("span", "flatpickr-cur-month");
     } else {
       self.monthsDropdownContainer = createElement<HTMLSelectElement>(
         "select",

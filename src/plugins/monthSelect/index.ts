@@ -82,7 +82,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
         month.addEventListener("click", selectMonth);
         self.monthsContainer.appendChild(month);
         if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-          month.classList.add("disabled");
+          month.classList.add("flatpickr-disabled");
         }
       }
 
@@ -93,11 +93,11 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
       if (!fp.rContainer) return;
 
       const currentlySelected = fp.rContainer.querySelectorAll(
-        ".flatpickr-monthSelect-month.selected"
+        ".flatpickr-monthSelect-month.flatpickr-selected"
       );
 
       for (let index = 0; index < currentlySelected.length; index++) {
-        currentlySelected[index].classList.remove("selected");
+        currentlySelected[index].classList.remove("flatpickr-selected");
       }
 
       const month = fp.rContainer.querySelector(
@@ -105,7 +105,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
       );
 
       if (month) {
-        month.classList.add("selected");
+        month.classList.add("flatpickr-selected");
       }
     }
 
@@ -129,9 +129,9 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
         months.forEach(month => {
           month.dateObj.setFullYear(fp.currentYear);
           if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-            month.classList.add("disabled");
+            month.classList.add("flatpickr-disabled");
           } else {
-            month.classList.remove("disabled");
+            month.classList.remove("flatpickr-disabled");
           }
         });
       }
@@ -141,7 +141,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
     function selectMonth(e: Event) {
       e.preventDefault();
       e.stopPropagation();
-      if (e.target instanceof Element && !e.target.classList.contains("disabled")) {
+      if (e.target instanceof Element && !e.target.classList.contains("flatpickr-disabled")) {
         setMonth((e.target as MonthElement).dateObj);
         fp.close();
       }
