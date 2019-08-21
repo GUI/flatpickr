@@ -237,7 +237,7 @@
         return undefined; // nothing found
     }
     function createNumberInput(inputClassName, opts) {
-        var wrapper = createElement("div", "numInputWrapper"), numInput = createElement("input", "numInput " + inputClassName), arrowUp = createElement("span", "arrowUp"), arrowDown = createElement("span", "arrowDown");
+        var wrapper = createElement("div", "flatpickr-numInputWrapper"), numInput = createElement("input", "flatpickr-numInput " + inputClassName), arrowUp = createElement("span", "flatpickr-arrowUp"), arrowDown = createElement("span", "flatpickr-arrowDown");
         if (navigator.userAgent.indexOf("MSIE 9.0") === -1) {
             numInput.type = "number";
         }
@@ -1055,7 +1055,8 @@
                 var endIndex = delta > 0 ? month.children.length : -1;
                 for (var i = startIndex; i != endIndex; i += delta) {
                     var c = month.children[i];
-                    if (c.className.indexOf("flatpickr-hidden") === -1 && isEnabled(c.dateObj))
+                    if (c.className.indexOf("flatpickr-hidden") === -1 &&
+                        isEnabled(c.dateObj))
                         return c;
                 }
             }
@@ -1182,7 +1183,7 @@
             var monthElement;
             if (self.config.showMonths > 1 ||
                 self.config.monthSelectorType === "static") {
-                monthElement = createElement("span", "cur-month");
+                monthElement = createElement("span", "flatpickr-cur-month");
             }
             else {
                 self.monthsDropdownContainer = createElement("select", "flatpickr-monthDropdown-months");
@@ -1195,7 +1196,9 @@
                 buildMonthSwitch();
                 monthElement = self.monthsDropdownContainer;
             }
-            var yearInput = createNumberInput("cur-year", { tabindex: "-1" });
+            var yearInput = createNumberInput("flatpickr-cur-year", {
+                tabindex: "-1"
+            });
             var yearElement = yearInput.getElementsByTagName("input")[0];
             yearElement.setAttribute("aria-label", self.l10n.yearAriaLabel);
             if (self.config.minDate) {
@@ -1773,14 +1776,23 @@
                         (maxRange > 0 && timestamp > maxRange);
                     if (outOfRange) {
                         dayElem.classList.add("flatpickr-notAllowed");
-                        ["flatpickr-inRange", "flatpickr-startRange", "flatpickr-endRange"].forEach(function (c) {
+                        [
+                            "flatpickr-inRange",
+                            "flatpickr-startRange",
+                            "flatpickr-endRange",
+                        ].forEach(function (c) {
                             dayElem.classList.remove(c);
                         });
                         return "continue";
                     }
                     else if (containsDisabled && !outOfRange)
                         return "continue";
-                    ["flatpickr-startRange", "flatpickr-inRange", "flatpickr-endRange", "flatpickr-notAllowed"].forEach(function (c) {
+                    [
+                        "flatpickr-startRange",
+                        "flatpickr-inRange",
+                        "flatpickr-endRange",
+                        "flatpickr-notAllowed",
+                    ].forEach(function (c) {
                         dayElem.classList.remove(c);
                     });
                     if (elem !== undefined) {
@@ -2022,7 +2034,8 @@
                 (configPosHorizontal != null && configPosHorizontal === "center"
                     ? (calendarWidth - inputBounds.width) / 2
                     : 0);
-            var right = window.document.body.offsetWidth - (window.pageXOffset + inputBounds.right);
+            var right = window.document.body.offsetWidth -
+                (window.pageXOffset + inputBounds.right);
             var rightMost = left + calendarWidth > window.document.body.offsetWidth;
             var centerMost = right + calendarWidth > window.document.body.offsetWidth;
             toggleClass(self.calendarContainer, "flatpickr-rightMost", rightMost);

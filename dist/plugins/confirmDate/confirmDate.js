@@ -71,8 +71,8 @@
                             !fp.config.inline &&
                             showCondition &&
                             localConfirmContainer)
-                            return localConfirmContainer.classList.add("visible");
-                        localConfirmContainer.classList.remove("visible");
+                            return localConfirmContainer.classList.add("flatpickr-visible");
+                        localConfirmContainer.classList.remove("flatpickr-visible");
                     }
                 }
                 : {}));

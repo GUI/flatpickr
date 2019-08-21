@@ -715,7 +715,8 @@ function FlatpickrInstance(
               compareDates(date, self.selectedDates[1], true) === 0
           );
 
-          if (className === "flatpickr-nextMonthDay") dayElement.classList.add("flatpickr-inRange");
+          if (className === "flatpickr-nextMonthDay")
+            dayElement.classList.add("flatpickr-inRange");
         }
       }
     } else {
@@ -760,7 +761,10 @@ function FlatpickrInstance(
 
       for (let i = startIndex; i != endIndex; i += delta) {
         const c = month.children[i] as DayElement;
-        if (c.className.indexOf("flatpickr-hidden") === -1 && isEnabled(c.dateObj))
+        if (
+          c.className.indexOf("flatpickr-hidden") === -1 &&
+          isEnabled(c.dateObj)
+        )
           return c;
       }
     }
@@ -976,7 +980,10 @@ function FlatpickrInstance(
       self.config.showMonths > 1 ||
       self.config.monthSelectorType === "static"
     ) {
-      monthElement = createElement<HTMLSpanElement>("span", "flatpickr-cur-month");
+      monthElement = createElement<HTMLSpanElement>(
+        "span",
+        "flatpickr-cur-month"
+      );
     } else {
       self.monthsDropdownContainer = createElement<HTMLSelectElement>(
         "select",
@@ -997,7 +1004,9 @@ function FlatpickrInstance(
       monthElement = self.monthsDropdownContainer;
     }
 
-    const yearInput = createNumberInput("cur-year", { tabindex: "-1" });
+    const yearInput = createNumberInput("flatpickr-cur-year", {
+      tabindex: "-1",
+    });
 
     const yearElement = yearInput.getElementsByTagName(
       "input"
@@ -1157,7 +1166,8 @@ function FlatpickrInstance(
     self.timeContainer.appendChild(separator);
     self.timeContainer.appendChild(minuteInput);
 
-    if (self.config.time_24hr) self.timeContainer.classList.add("flatpickr-time24hr");
+    if (self.config.time_24hr)
+      self.timeContainer.classList.add("flatpickr-time24hr");
 
     if (self.config.enableSeconds) {
       self.timeContainer.classList.add("flatpickr-hasSeconds");
@@ -1799,13 +1809,22 @@ function FlatpickrInstance(
 
         if (outOfRange) {
           dayElem.classList.add("flatpickr-notAllowed");
-          ["flatpickr-inRange", "flatpickr-startRange", "flatpickr-endRange"].forEach(c => {
+          [
+            "flatpickr-inRange",
+            "flatpickr-startRange",
+            "flatpickr-endRange",
+          ].forEach(c => {
             dayElem.classList.remove(c);
           });
           continue;
         } else if (containsDisabled && !outOfRange) continue;
 
-        ["flatpickr-startRange", "flatpickr-inRange", "flatpickr-endRange", "flatpickr-notAllowed"].forEach(c => {
+        [
+          "flatpickr-startRange",
+          "flatpickr-inRange",
+          "flatpickr-endRange",
+          "flatpickr-notAllowed",
+        ].forEach(c => {
           dayElem.classList.remove(c);
         });
 
@@ -2156,7 +2175,9 @@ function FlatpickrInstance(
       (configPosHorizontal != null && configPosHorizontal === "center"
         ? (calendarWidth - inputBounds.width) / 2
         : 0);
-    const right = window.document.body.offsetWidth - (window.pageXOffset + inputBounds.right);
+    const right =
+      window.document.body.offsetWidth -
+      (window.pageXOffset + inputBounds.right);
     const rightMost = left + calendarWidth > window.document.body.offsetWidth;
     const centerMost = right + calendarWidth > window.document.body.offsetWidth;
 
@@ -2745,7 +2766,9 @@ function FlatpickrInstance(
       (e.target as HTMLInputElement).select();
     } else if ((e.target as Element).classList.contains("flatpickr-arrowUp")) {
       self.changeYear(self.currentYear + 1);
-    } else if ((e.target as Element).classList.contains("flatpickr-arrowDown")) {
+    } else if (
+      (e.target as Element).classList.contains("flatpickr-arrowDown")
+    ) {
       self.changeYear(self.currentYear - 1);
     }
   }

@@ -617,7 +617,9 @@ describe("flatpickr", () => {
       fp._input.blur();
 
       expect(fp.isOpen).toBe(false);
-      expect(fp.calendarContainer.classList.contains("flatpickr-open")).toBe(false);
+      expect(fp.calendarContainer.classList.contains("flatpickr-open")).toBe(
+        false
+      );
 
       expect(fp.selectedDates.length).toBe(0);
       simulate("focus", fp._input);
@@ -787,7 +789,9 @@ describe("flatpickr", () => {
         static: true,
       });
 
-      expect(fp.calendarContainer.classList.contains("flatpickr-static")).toBe(true);
+      expect(fp.calendarContainer.classList.contains("flatpickr-static")).toBe(
+        true
+      );
       if (!fp.element.parentNode) return;
       expect(
         (fp.element.parentNode as Element).classList.contains(
@@ -1312,7 +1316,9 @@ describe("flatpickr", () => {
       expect(day(21).classList.contains("flatpickr-startRange")).toEqual(true);
 
       for (let i = 0; i < 42; i++)
-        expect(day(i).classList.contains("flatpickr-inRange")).toEqual(i > 21 && i < 32);
+        expect(day(i).classList.contains("flatpickr-inRange")).toEqual(
+          i > 21 && i < 32
+        );
 
       expect(day(32).classList.contains("flatpickr-endRange")).toEqual(true);
 
@@ -1329,7 +1335,9 @@ describe("flatpickr", () => {
         expect(day(i).classList.contains("flatpickr-inRange")).toEqual(false);
 
       for (let i = 17; i < 22; i++) {
-        expect(day(i).classList.contains("flatpickr-notAllowed")).toEqual(false);
+        expect(day(i).classList.contains("flatpickr-notAllowed")).toEqual(
+          false
+        );
         expect(day(i).classList.contains("flatpickr-disabled")).toEqual(false);
       }
 

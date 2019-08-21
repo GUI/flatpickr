@@ -80,8 +80,9 @@
                     month.tabIndex = -1;
                     month.addEventListener("click", selectMonth);
                     self.monthsContainer.appendChild(month);
-                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-                        month.classList.add("disabled");
+                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
+                        (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                        month.classList.add("flatpickr-disabled");
                     }
                 }
                 fp.rContainer.appendChild(self.monthsContainer);
@@ -89,13 +90,13 @@
             function setCurrentlySelected() {
                 if (!fp.rContainer)
                     return;
-                var currentlySelected = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month.selected");
+                var currentlySelected = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month.flatpickr-selected");
                 for (var index = 0; index < currentlySelected.length; index++) {
-                    currentlySelected[index].classList.remove("selected");
+                    currentlySelected[index].classList.remove("flatpickr-selected");
                 }
                 var month = fp.rContainer.querySelector(".flatpickr-monthSelect-month:nth-child(" + (fp.currentMonth + 1) + ")");
                 if (month) {
-                    month.classList.add("selected");
+                    month.classList.add("flatpickr-selected");
                 }
             }
             function selectYear() {
@@ -117,11 +118,12 @@
                     var months = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month");
                     months.forEach(function (month) {
                         month.dateObj.setFullYear(fp.currentYear);
-                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
-                            month.classList.add("disabled");
+                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
+                            (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                            month.classList.add("flatpickr-disabled");
                         }
                         else {
-                            month.classList.remove("disabled");
+                            month.classList.remove("flatpickr-disabled");
                         }
                     });
                 }
@@ -129,7 +131,8 @@
             function selectMonth(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                if (e.target instanceof Element && !e.target.classList.contains("disabled")) {
+                if (e.target instanceof Element &&
+                    !e.target.classList.contains("flatpickr-disabled")) {
                     setMonth(e.target.dateObj);
                     fp.close();
                 }

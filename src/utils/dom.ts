@@ -42,13 +42,16 @@ export function createNumberInput(
   inputClassName: string,
   opts?: Record<string, any>
 ) {
-  const wrapper = createElement<HTMLDivElement>("div", "numInputWrapper"),
+  const wrapper = createElement<HTMLDivElement>(
+      "div",
+      "flatpickr-numInputWrapper"
+    ),
     numInput = createElement<HTMLInputElement>(
       "input",
-      "numInput " + inputClassName
+      "flatpickr-numInput " + inputClassName
     ),
-    arrowUp = createElement<HTMLSpanElement>("span", "arrowUp"),
-    arrowDown = createElement<HTMLSpanElement>("span", "arrowDown");
+    arrowUp = createElement<HTMLSpanElement>("span", "flatpickr-arrowUp"),
+    arrowDown = createElement<HTMLSpanElement>("span", "flatpickr-arrowDown");
 
   if (navigator.userAgent.indexOf("MSIE 9.0") === -1) {
     numInput.type = "number";

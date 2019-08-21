@@ -793,6 +793,6 @@ span.flatpickr-weekday {
             transform: translate3d(0, 0, 0);
   }
 }
-span.flatpickr-day.selected {
+span.flatpickr-day.flatpickr-selected {
   font-weight: bold;
 }
