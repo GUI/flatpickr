@@ -2034,8 +2034,7 @@
                 (configPosHorizontal != null && configPosHorizontal === "center"
                     ? (calendarWidth - inputBounds.width) / 2
                     : 0);
-            var right = window.document.body.offsetWidth -
-                (window.pageXOffset + inputBounds.right);
+            var right = window.document.body.offsetWidth - (window.pageXOffset + inputBounds.right);
             var rightMost = left + calendarWidth > window.document.body.offsetWidth;
             var centerMost = right + calendarWidth > window.document.body.offsetWidth;
             toggleClass(self.calendarContainer, "flatpickr-rightMost", rightMost);

@@ -35,9 +35,9 @@ function confirmDatePlugin(pluginConfig: Config): Plugin {
       onReady() {
         confirmContainer = fp._createElement<HTMLDivElement>(
           "div",
-          `${confirmButtonCSSClass} ${config.showAlways ? "visible" : ""} ${
-            config.theme
-          }Theme`,
+          `${confirmButtonCSSClass} ${
+            config.showAlways ? "flatpickr-visible" : ""
+          } flatpickr-${config.theme}Theme`,
           config.confirmText
         );
 

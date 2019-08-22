@@ -52,7 +52,7 @@
                         fp.close();
                 },
                 onReady: function () {
-                    confirmContainer = fp._createElement("div", confirmButtonCSSClass + " " + (config.showAlways ? "visible" : "") + " " + config.theme + "Theme", config.confirmText);
+                    confirmContainer = fp._createElement("div", confirmButtonCSSClass + " " + (config.showAlways ? "flatpickr-visible" : "") + " flatpickr-" + config.theme + "Theme", config.confirmText);
                     confirmContainer.tabIndex = -1;
                     confirmContainer.innerHTML += config.confirmIcon;
                     confirmContainer.addEventListener("click", fp.close);

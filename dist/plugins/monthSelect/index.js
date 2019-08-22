@@ -80,8 +80,7 @@
                     month.tabIndex = -1;
                     month.addEventListener("click", selectMonth);
                     self.monthsContainer.appendChild(month);
-                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
-                        (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                    if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
                         month.classList.add("flatpickr-disabled");
                     }
                 }
@@ -118,8 +117,7 @@
                     var months = fp.rContainer.querySelectorAll(".flatpickr-monthSelect-month");
                     months.forEach(function (month) {
                         month.dateObj.setFullYear(fp.currentYear);
-                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) ||
-                            (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
+                        if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
                             month.classList.add("flatpickr-disabled");
                         }
                         else {
@@ -157,7 +155,7 @@
                 }
                 if (!fp.rContainer || !self.monthsContainer)
                     return;
-                var currentlySelected = fp.rContainer.querySelector(".flatpickr-monthSelect-month.selected");
+                var currentlySelected = fp.rContainer.querySelector(".flatpickr-monthSelect-month.flatpickr-selected");
                 var index = Array.prototype.indexOf.call(self.monthsContainer.children, document.activeElement);
                 if (index === -1) {
                     var target = currentlySelected || self.monthsContainer.firstElementChild;

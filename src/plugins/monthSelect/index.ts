@@ -81,10 +81,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
         month.tabIndex = -1;
         month.addEventListener("click", selectMonth);
         self.monthsContainer.appendChild(month);
-        if (
-          (fp.config.minDate && month.dateObj < fp.config.minDate) ||
-          (fp.config.maxDate && month.dateObj > fp.config.maxDate)
-        ) {
+        if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
           month.classList.add("flatpickr-disabled");
         }
       }
@@ -133,10 +130,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
         );
         months.forEach(month => {
           month.dateObj.setFullYear(fp.currentYear);
-          if (
-            (fp.config.minDate && month.dateObj < fp.config.minDate) ||
-            (fp.config.maxDate && month.dateObj > fp.config.maxDate)
-          ) {
+          if ((fp.config.minDate && month.dateObj < fp.config.minDate) || (fp.config.maxDate && month.dateObj > fp.config.maxDate)) {
             month.classList.add("flatpickr-disabled");
           } else {
             month.classList.remove("flatpickr-disabled");
@@ -183,7 +177,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
       if (!fp.rContainer || !self.monthsContainer) return;
 
       const currentlySelected = fp.rContainer.querySelector(
-        ".flatpickr-monthSelect-month.selected"
+        ".flatpickr-monthSelect-month.flatpickr-selected"
       ) as HTMLElement;
 
       let index = Array.prototype.indexOf.call(
